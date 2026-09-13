@@ -77,7 +77,7 @@ The workspace data model inspection on September 13, 2026 passed 150 direct asse
 
 Chrome 152 validated all 19 scenario factories and paged through 37 active tasks. Shell inspection confirmed visible loading, injected failure, Retry recovery, navigation, direct reload, and no overflow at 1440 and 375 CSS pixels. Browser storage stayed unchanged throughout failure and recovery. Error injection was temporary browser memory and was removed on reload.
 
-Safari inspection for this data model change is pending. WebDriver could not create a session because Allow remote automation is disabled in Safari's Developer settings. Earlier scaffold Safari results above do not verify this change. Enable that setting, then repeat shell loading, failure, Retry, and fixture reader inspection before closing the final scope milestone.
+Safari 26.6.2 passed inspection after Gary enabled Allow remote automation in Safari's Developer settings. It validated all 19 fixture scenarios, paged through 37 active tasks, traced distinct artifact context history, rejected a second active run, and returned the expected missing version error. Shell checks confirmed loading, failure, Retry recovery, navigation, direct reload, unchanged browser storage, and no overflow at 1440 and 600 CSS pixels. Format checking, typecheck, lint, and the production build passed; the same five existing shadcn lint warnings remain.
 
 Real persistence, file access, and agent execution belong to later scoped features. The historical Figma sequence in the wider scope still needs reconciliation with spec 0001.
 

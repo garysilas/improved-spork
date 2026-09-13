@@ -1,7 +1,7 @@
 # 0002. Workspace data model
 
 **Date**: 2026-09-13
-**Status**: In Progress
+**Status**: Accepted
 
 ## Summary
 

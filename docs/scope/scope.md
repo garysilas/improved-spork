@@ -24,7 +24,7 @@ The workflow suggests a path, and Gary can override its depth. Record load beari
 | 4 | Visual language and UI foundation | Figma design | in-progress |
 | 1 | Application architecture and scaffold | Foundation | done |
 | 2 | Coding standards and tooling | Foundation | done |
-| 3 | Workspace data model | Foundation | in-progress |
+| 3 | Workspace data model | Foundation | done |
 | 5 | Project navigation prototype | Clickable workspace | planned |
 | 6 | Task conversation and activity prototype | Clickable workspace | planned |
 | 7 | Context selection prototype | Clickable workspace | planned |
@@ -69,22 +69,22 @@ Capture conventions from the real scaffold, then establish consistent formatting
 
 - [x] Capture conventions and tooling choices: `/audit`
 
-### 3. Workspace data model · in-progress
+### 3. Workspace data model · done
 
 Define projects, tasks, runs, context selections, and artifacts, including how they relate. Use that model for realistic sample content before installing persistence.
 
 **Done when:** a spec defines identity, ownership, task and run states, and artifact relationships; sample data covers empty, active, waiting, failed, and completed work; persistence and deletion rules are recorded for the later real workspace.
 
-**Spec:** [0002. Workspace data model](../specs/0002-workspace-data-model/index.md). Content accepted September 13, 2026. Implementation is built; Safari inspection remains pending.
+**Spec:** [0002. Workspace data model](../specs/0002-workspace-data-model/index.md). Content accepted and implementation completed September 13, 2026.
 
 * [x] Design it (spec): `/architect workspace data model`
-* [ ] Build it: `/develop workspace data model`
+* [x] Build it: `/develop workspace data model`
   * [x] Define typed records, relationships, and derived status with a small coherent sample (AC-1, AC-2, AC-4, AC-8).
   * [x] Add validated context, lifecycle, artifact history, and retention fixtures (AC-3, AC-5, AC-7).
   * [x] Connect the paginated sample reader, preserve the shell, and declare later action contracts (AC-1, AC-6, AC-7, AC-8).
-  * [ ] Complete Prototype build checks and Safari and Chrome inspection (AC-1 through AC-8).
+  * [x] Complete Prototype build checks and Safari and Chrome inspection (AC-1 through AC-8).
 
-**Code:** `src/services/workspace/`, `src/services/mock/`, `src/services/index.ts`, and `src/fixtures/workspace.ts`. Build checks and Chrome inspection passed. Safari remote automation must be enabled to complete inspection; results are recorded in `README.md`.
+**Code:** `src/services/workspace/`, `src/services/mock/`, `src/services/index.ts`, and `src/fixtures/workspace.ts`. Format checking, typecheck, lint, build, fixture assertions, and Chrome and Safari inspection passed. Results are recorded in `README.md`.
 
 ## Clickable workspace
 
