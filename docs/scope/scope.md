@@ -75,14 +75,16 @@ Define projects, tasks, runs, context selections, and artifacts, including how t
 
 **Done when:** a spec defines identity, ownership, task and run states, and artifact relationships; sample data covers empty, active, waiting, failed, and completed work; persistence and deletion rules are recorded for the later real workspace.
 
-**Spec:** [0002. Workspace data model](../specs/0002-workspace-data-model/index.md). Content accepted September 13, 2026. Implementation is pending.
+**Spec:** [0002. Workspace data model](../specs/0002-workspace-data-model/index.md). Content accepted September 13, 2026. Implementation is built; Safari inspection remains pending.
 
 * [x] Design it (spec): `/architect workspace data model`
 * [ ] Build it: `/develop workspace data model`
-  * [ ] Define typed records, relationships, and derived status with a small coherent sample (AC-1, AC-2, AC-4, AC-8).
-  * [ ] Add validated context, lifecycle, artifact history, and retention fixtures (AC-3, AC-5, AC-7).
-  * [ ] Connect the paginated sample reader, preserve the shell, and declare later action contracts (AC-1, AC-6, AC-7, AC-8).
+  * [x] Define typed records, relationships, and derived status with a small coherent sample (AC-1, AC-2, AC-4, AC-8).
+  * [x] Add validated context, lifecycle, artifact history, and retention fixtures (AC-3, AC-5, AC-7).
+  * [x] Connect the paginated sample reader, preserve the shell, and declare later action contracts (AC-1, AC-6, AC-7, AC-8).
   * [ ] Complete Prototype build checks and Safari and Chrome inspection (AC-1 through AC-8).
+
+**Code:** `src/services/workspace/`, `src/services/mock/`, `src/services/index.ts`, and `src/fixtures/workspace.ts`. Build checks and Chrome inspection passed. Safari remote automation must be enabled to complete inspection; results are recorded in `README.md`.
 
 ## Clickable workspace
 

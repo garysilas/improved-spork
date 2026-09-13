@@ -27,7 +27,17 @@ npm run format:check
 
 `/` redirects to `/workspace`. `/workspace/task-preview` changes the task region inside the same shell. `/settings` redirects to `/settings/appearance`. Unknown routes provide a link back to the workspace. Both local servers support direct entry and refresh.
 
-The data boundary is `ShellService.loadShell(): Promise<ShellSnapshot>` in `src/services/shell-service.ts`. Adapter selection lives in `src/services/index.ts`. The mock adapter reads `src/fixtures/shell.ts` asynchronously without network access. The workspace owns loading, error, and Retry states and ignores results after disposal. Future data integration can replace the adapter. Sample content is not persisted.
+Adapter selection and public workspace exports live in `src/services/index.ts`. The existing `ShellService.loadShell(): Promise<ShellSnapshot>` remains compatible. Its project label now comes from the designated project in the validated sample reader. Placeholder copy stays in `src/fixtures/shell.ts`. The workspace owns loading, error, and Retry states and ignores results after disposal. Sample content is not persisted.
+
+`src/services/workspace/types.ts` defines the version 1 sample envelope and related records. `validateWorkspace(unknown)` rejects invalid shapes, ownership, lifecycle states, versions, or conflicting context as one `invalid_data` result. `derive.ts` provides pure status, title, context, submission, resolution, and retention checks. These helpers never mutate records or grant file access.
+
+`WorkspaceReader` in `src/services/workspace/reader.ts` declares all 13 asynchronous reads. Each returns `Result<T>`, either `{ ok: true, value }` or `{ ok: false, error: { code, message } }`. `createMockWorkspaceReader(dataset, options)` validates and copies the dataset at construction, then isolates every returned result from consumer mutation. Invalid datasets fail every read rather than exposing a partial graph. Missing records return `not_found`; malformed page inputs or mismatched cursors return `invalid_input`; injected failures and unexpected exceptions return `unavailable`.
+
+Lists accept `cursor` and `limit` (default 25, integer 1 to 100). Projects and tasks also accept `archive` (`active`, `archived`, or `all`, default `active`). Task filtering includes parent archival. Sources accept `includeRemoved`, default `false`. Direct reads include archived records. Project and task order uses updated time descending, then ID ascending. Other history uses ascending sequence or version; sources and artifacts use creation time, then ID. Pass `nextCursor` back with the same query filters until it is absent. `getArtifactVersion` defaults to the highest version.
+
+`src/fixtures/workspace.ts` exports fresh named scenario factories for empty workspaces and projects, every run state, questions, approvals, interruption, archival, artifact versions, removed source history, and a list crossing the default page boundary. All paths and contents are fabricated. Constructor options `unavailable` (a boolean or callback) and `delayMs` support development failure, recovery, and loading inspection without a settings screen or workspace storage.
+
+`WorkspaceActions` in `src/services/workspace/actions.ts` only declares later actions. It has no implementation and never reports a pretend successful write. Every action requires `operationId`; later adapters must replay identical inputs and reject different inputs under the same key with `conflict`. Optional action values are explicit `undefined` unions. Ownership, active run, archive, missing context, stale response, retry, and atomic deletion rules and errors are specified in [spec 0002](docs/specs/0002-workspace-data-model/index.md). No client action can inject context, set run state, or publish an artifact.
 
 ## Appearance
 
@@ -63,7 +73,13 @@ Chrome checks covered navigation and history, both local servers, direct routes 
 
 Safari inspection covered workspace and Settings rendering, direct production entry, Back and Forward navigation, imported appearance, light and dark mode, and reload persistence. Occupied port checks confirmed that both local servers fail visibly instead of selecting a new port. Browser inspection is not a separate automated test suite.
 
-Real workspace entities, persistence, file access, and agent execution belong to later scoped features. The historical Figma sequence in the wider scope still needs reconciliation with spec 0001.
+The workspace data model inspection on September 13, 2026 passed 150 direct assertions through Vite's module runner, covering all reader methods, named fixtures, pagination without duplication, invalid graph rejection, retained history, active work guards, decline and retry rules, isolated results, and recovery. Additional regression checks passed for fractional UTC ordering, strict archive filters, sparse arrays, isolated failures, Unicode titles, and unexpected exceptions. No test runner or persistent test suite was added.
+
+Chrome 152 validated all 19 scenario factories and paged through 37 active tasks. Shell inspection confirmed visible loading, injected failure, Retry recovery, navigation, direct reload, and no overflow at 1440 and 375 CSS pixels. Browser storage stayed unchanged throughout failure and recovery. Error injection was temporary browser memory and was removed on reload.
+
+Safari inspection for this data model change is pending. WebDriver could not create a session because Allow remote automation is disabled in Safari's Developer settings. Earlier scaffold Safari results above do not verify this change. Enable that setting, then repeat shell loading, failure, Retry, and fixture reader inspection before closing the final scope milestone.
+
+Real persistence, file access, and agent execution belong to later scoped features. The historical Figma sequence in the wider scope still needs reconciliation with spec 0001.
 
 ## Formatting and code checks
 
