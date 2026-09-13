@@ -1,0 +1,14 @@
+node_modules/
+dist/
+dist-ssr/
+package-lock.json
+.agents/
+.codex/
+.playwright-cli/
+output/
+docs/
+AGENTS.md
+CLAUDE.md
+design.md
+.env
+.env.*
