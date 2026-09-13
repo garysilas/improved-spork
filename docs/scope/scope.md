@@ -24,7 +24,7 @@ The workflow suggests a path, and Gary can override its depth. Record load beari
 | 4 | Visual language and UI foundation | Figma design | in-progress |
 | 1 | Application architecture and scaffold | Foundation | done |
 | 2 | Coding standards and tooling | Foundation | done |
-| 3 | Workspace data model | Foundation | planned |
+| 3 | Workspace data model | Foundation | in-progress |
 | 5 | Project navigation prototype | Clickable workspace | planned |
 | 6 | Task conversation and activity prototype | Clickable workspace | planned |
 | 7 | Context selection prototype | Clickable workspace | planned |
@@ -69,13 +69,20 @@ Capture conventions from the real scaffold, then establish consistent formatting
 
 - [x] Capture conventions and tooling choices: `/audit`
 
-### 3. Workspace data model · planned · needs a decision
+### 3. Workspace data model · in-progress
 
 Define projects, tasks, runs, context selections, and artifacts, including how they relate. Use that model for realistic sample content before installing persistence.
 
 **Done when:** a spec defines identity, ownership, task and run states, and artifact relationships; sample data covers empty, active, waiting, failed, and completed work; persistence and deletion rules are recorded for the later real workspace.
 
-- [ ] Design it (spec): `/architect workspace data model`
+**Spec:** [0002. Workspace data model](../specs/0002-workspace-data-model/index.md). Content accepted September 13, 2026. Implementation is pending.
+
+* [x] Design it (spec): `/architect workspace data model`
+* [ ] Build it: `/develop workspace data model`
+  * [ ] Define typed records, relationships, and derived status with a small coherent sample (AC-1, AC-2, AC-4, AC-8).
+  * [ ] Add validated context, lifecycle, artifact history, and retention fixtures (AC-3, AC-5, AC-7).
+  * [ ] Connect the paginated sample reader, preserve the shell, and declare later action contracts (AC-1, AC-6, AC-7, AC-8).
+  * [ ] Complete Prototype build checks and Safari and Chrome inspection (AC-1 through AC-8).
 
 ## Clickable workspace
 
