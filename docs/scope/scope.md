@@ -22,7 +22,7 @@ The workflow suggests a path, and Gary can override its depth. Record load beari
 | # | Feature | Phase | Status |
 |---|---|---|---|
 | 4 | Visual language and UI foundation | Figma design | in-progress |
-| 1 | Application architecture and scaffold | Foundation | in-progress |
+| 1 | Application architecture and scaffold | Foundation | done |
 | 2 | Coding standards and tooling | Foundation | done |
 | 3 | Workspace data model | Foundation | planned |
 | 5 | Project navigation prototype | Clickable workspace | planned |
@@ -46,7 +46,7 @@ Use Gary's selected Figma template as the visual and component foundation, exten
 
 ## Foundations
 
-### 1. Application architecture and scaffold · in-progress
+### 1. Application architecture and scaffold · done
 
 Create the smallest runnable browser shell needed for a private workspace on this Mac. Gary accepted the architecture on September 13, 2026: React, Vite, TypeScript, and shadcn components with Radix, using Node 22 and npm. This feature now starts first and uses shadcn.io as its UI source, replacing its earlier Figma acceptance prerequisite. The broader Figma sequence above records the earlier plan and needs scope reconciliation.
 
