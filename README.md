@@ -63,7 +63,7 @@ A representative import fixture is in `src/fixtures/tweakcn-modern-minimal.css`,
 | `src/services`           | Data contract and selected adapter                       |
 | `src/fixtures`           | Sample labels and representative theme CSS               |
 
-The app uses the Vite React TypeScript initializer and shadcn Radix Nova primitives. It uses the system font rather than the initializer's optional font package. Local Git is initialized with no remote. Dependency output, environment files, and temporary browser artifacts are ignored. Existing specs and the project skill are preserved.
+The app uses the Vite React TypeScript initializer and shadcn Radix Nova primitives. It uses the system font rather than the initializer's optional font package. Git has an `origin` remote, and the workspace data model was merged through PR #1. Dependency output, environment files, and temporary browser artifacts are ignored. Existing specs and the project skill are preserved.
 
 ## Build inspection
 
@@ -79,7 +79,7 @@ Chrome 152 validated all 19 scenario factories and paged through 37 active tasks
 
 Safari 26.6.2 passed inspection after Gary enabled Allow remote automation in Safari's Developer settings. It validated all 19 fixture scenarios, paged through 37 active tasks, traced distinct artifact context history, rejected a second active run, and returned the expected missing version error. Shell checks confirmed loading, failure, Retry recovery, navigation, direct reload, unchanged browser storage, and no overflow at 1440 and 600 CSS pixels. Format checking, typecheck, lint, and the production build passed; the same five existing shadcn lint warnings remain.
 
-Real persistence, file access, and agent execution belong to later scoped features. The historical Figma sequence in the wider scope still needs reconciliation with spec 0001.
+Real persistence, file access, and agent execution belong to later scoped features. For the current handoff, unfinished visual work, Figma review status, and next component selection step, read [scope](docs/scope/scope.md). Figma exploration is paused and is not an approved implementation reference.
 
 ## Formatting and code checks
 
@@ -94,3 +94,11 @@ The tooling checks passed on September 13, 2026 with Node 22.22.3 and npm 10.9.8
 The application shell uses the actual shadcn.io Developer Tools Sidebar block, installed through its registry and adapted in `src/components/blocks/sidebar/sidebar-developer-tools.tsx`. Demo content became Workspace and Settings routes. Its SidebarProvider, icon collapse, collapsible groups, rail, tooltips, breadcrumb, and header toggle remain in place. The fixed demo frame was expanded to the application viewport. The mobile drawer closes after choosing a route. Sidebar state stays in memory.
 
 Gary's UI direction is to start with his selected blocks, inspect them through MCP and their previews, and modify their content. Ask before creating a replacement from scratch. Do not replace a selected block with individually composed primitives.
+
+## Chat With Tools first review
+
+Open `/workspace/task-preview` for the actual selected shadcn.io Chat With Tools block, adapted to a fabricated completed task. Expand activity, expand a tool card, and use View plan to inspect the Markdown. Escape or Back to conversation closes the inspector and returns focus. The labelled composer holds only an in-memory draft; sending is disabled because no agent is connected. The draft clears on navigation or reload.
+
+The block source lives in `src/components/blocks/ai/ai-chat-with-tools.tsx`. Its original header, message rows, tool card structure, JSON details, and composer were retained and adapted with the installed Radix controls. The original source was retrieved through the authenticated shadcn.io registry. `src/fixtures/chat-review.ts` supplies an isolated coherent graph through the existing asynchronous reader and `src/services/chat-review.ts`. No existing lifecycle fixtures were changed.
+
+Verification for this review: format checking, typecheck, lint, and production build passed. Lint retains five existing scaffold warnings. Vite reports a bundle size advisory for the current combined application chunk. An isolated runtime check validated the review fixture and confirmed completed, unavailable, and empty reader results. Safari rendered the screen with its existing saved theme; activity expansion, inspector opening, Escape, and return focus passed. In-app inspection confirmed tool details, local draft retention while inspecting, draft clearing on reload, and a 375 CSS pixel conversation with no horizontal overflow. Chrome launch and native inspection repeatedly timed out, so Chrome verification is still pending. Loading, failure, and empty UI states are implemented; they have not yet been separately inspected in the browser. Feature 4 remains in progress pending visual feedback and remaining verification.

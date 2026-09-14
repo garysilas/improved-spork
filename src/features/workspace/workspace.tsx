@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NavLink, useLocation } from 'react-router'
+import { NavLink } from 'react-router'
 import {
   ArrowRightIcon,
   FileTextIcon,
@@ -33,7 +33,6 @@ export function Workspace({
 }) {
   const [state, setState] = useState<LoadState>({ status: 'loading' })
   const [attempt, setAttempt] = useState(0)
-  const isPreview = useLocation().pathname === '/workspace/task-preview'
   useEffect(() => {
     let disposed = false
     Promise.resolve()
@@ -95,20 +94,12 @@ export function Workspace({
               {state.data.projectLabel}
             </div>
             <div className="flex flex-col gap-2">
-              <Button
-                variant={isPreview ? 'ghost' : 'secondary'}
-                asChild
-                className="justify-start"
-              >
+              <Button variant="secondary" asChild className="justify-start">
                 <NavLink end to="/workspace">
                   Overview
                 </NavLink>
               </Button>
-              <Button
-                variant={isPreview ? 'secondary' : 'ghost'}
-                asChild
-                className="justify-start"
-              >
+              <Button variant="ghost" asChild className="justify-start">
                 <NavLink to="/workspace/task-preview">Sample task</NavLink>
               </Button>
             </div>
@@ -129,32 +120,20 @@ export function Workspace({
                   <MessageSquareIcon aria-hidden="true" />
                 </EmptyMedia>
                 <EmptyTitle>
-                  <h3>
-                    {isPreview
-                      ? 'Sample task preview'
-                      : state.data.taskPlaceholder}
-                  </h3>
+                  <h3>{state.data.taskPlaceholder}</h3>
                 </EmptyTitle>
                 <EmptyDescription>
-                  {isPreview
-                    ? 'This is a sample destination. Your task conversation and activity will have a home here.'
-                    : 'Open the sample task to explore how a project, a task, and its results fit together.'}
+                  Open the sample task to explore how a project, a task, and its
+                  results fit together.
                 </EmptyDescription>
               </EmptyHeader>
               <EmptyContent>
-                {isPreview ? (
-                  <Badge variant="outline">Sample only</Badge>
-                ) : (
-                  <Button asChild variant="outline">
-                    <NavLink to="/workspace/task-preview">
-                      Explore sample task
-                      <ArrowRightIcon
-                        data-icon="inline-end"
-                        aria-hidden="true"
-                      />
-                    </NavLink>
-                  </Button>
-                )}
+                <Button asChild variant="outline">
+                  <NavLink to="/workspace/task-preview">
+                    Explore sample task
+                    <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
+                  </NavLink>
+                </Button>
               </EmptyContent>
             </Empty>
             <p className="text-center text-xs text-muted-foreground">

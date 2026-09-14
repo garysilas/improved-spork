@@ -5,13 +5,15 @@ A private workspace on Gary's Mac for moving personal projects forward with agen
 **Build approach:** Facade (make the core screens convincing and clickable with sample content, then connect real work behind them).
 **Workflow:** Prototype (build checks and visual inspection, with no separate verification stage by default). Features tagged Beta add `/check verify` and `/test` because they control real file access or agent actions.
 
-The first deliverable is an editable Figma design, including a design system, representative workspace screens, and key interaction states. Gary reviews the design before application tools are chosen or code is written. Next, implement the accepted design as a clickable prototype with sample content. Finally, connect a real task using selected project context and save a useful artifact that can be reopened later.
+The application scaffold, tooling, and workspace data model are built. The next deliverable is a convincing clickable workspace with sample content, using actual reusable UI components. Real persistence, selected file access, and agent execution come later. The earlier plan requiring an accepted Figma design before choosing tools or writing any code no longer describes the project.
 
-**Chosen design foundation:** [Agent Operating Env](https://www.figma.com/design/FiMb2uZ5I6KnqLRf760bz6), selected by Gary on September 12, 2026. Build from this template's existing design system and extend it with components and elements needed for the agent workspace. The file contains `🎨Design System` (page `868:14739`) and `💠 5. App - CMS` (page `1325:18457`). Reuse and adapt its typography, colors, controls, and relevant project, task, chat, and file components; develop agent activity, context selection, approvals, and artifact inspection within that visual language. Template selection establishes the foundation; workspace screens and interaction states still need design and review.
+**Current review:** Gary selected the actual shadcn.io Chat With Tools block after viewing live previews and accepted the running app review route. The first completed sample is implemented at `/workspace/task-preview`, with expandable tool activity, a Markdown inspector, and a local draft composer. Review this result before extending feature 4. Spec [0003](../specs/0003-chat-with-tools-review.md) records this bounded choice. Visual acceptance is still pending.
 
-**Earlier design file:** [Personal Agent Environment · Workspace Design](https://www.figma.com/design/66Btk7T6YgF8TXhAlJAjRb) was created with four pages before the template was selected. The template above now governs the design direction.
+**Handoff, September 13, 2026:** Figma work is paused. Gary wants useful shadcn.io components and blocks to be used directly, not recreated as similar looking arrangements in Figma or from separate primitives. He found the long design interview and Figma workflow unhelpful and asked how to communicate component choices. The agent recommended reviewing actual blocks and iterating in the running app. This recommendation has not yet been tried or expressly ratified as a permanent replacement for Figma. Do not expand Figma or assume its screens are accepted. Resume with a small visual shortlist of real shadcn.io options and confirm the review route before changing application code.
 
-**First workspace design:** [01 · Workspace — Result ready](https://www.figma.com/design/FiMb2uZ5I6KnqLRf760bz6/Agent-Operating-Env?node-id=8758-2331), on `Agent Workspace · First pass`. Created September 12, 2026: editable 1440 × 960 layout with template navigation and action instances, Poppins text styles, template paint styles, task conversation, context summary, follow-up composer, and artifact preview. Screenshot and layout checks passed (Poppins throughout; no detected overflow). This is a static first pass with sample content awaiting Gary's review; additional interaction states and custom reusable components remain to be designed.
+**Latest Figma exploration:** Gary supplied the [shadcn template](https://www.figma.com/design/eKRotihVQ9n9brVeiZadCZ/Agent-Enviroment) on September 13. Page `AOE Workspace` (`6007:2`) contains [completed task, light](https://www.figma.com/design/eKRotihVQ9n9brVeiZadCZ/Agent-Enviroment?node-id=6007-3) and [completed task, dark](https://www.figma.com/design/eKRotihVQ9n9brVeiZadCZ/Agent-Enviroment?node-id=6008-529). Both are editable 1440 × 960 static screens using Geist styles, template variables, and component instances. Screenshot inspection and visible layout bounds checks passed. These checks do not imply acceptance, keyboard verification, or a working prototype. Gary chose to refine the first screen rather than continue, then questioned the Figma workflow. No specific visual revisions were supplied. Original template pages were preserved.
+
+**Historical Figma files:** The [earlier Poppins template](https://www.figma.com/design/FiMb2uZ5I6KnqLRf760bz6) and its [result ready exploration](https://www.figma.com/design/FiMb2uZ5I6KnqLRf760bz6/Agent-Operating-Env?node-id=8758-2331), plus the initial [Workspace Design file](https://www.figma.com/design/66Btk7T6YgF8TXhAlJAjRb), are retained as history, not current implementation instructions.
 
 Success means Gary wants to open the workspace, can understand what an agent is doing, and can return to useful work without rebuilding its context. No firm deadline or spending limit has been specified. Running costs and limits must be decided before real execution is connected.
 
@@ -21,7 +23,7 @@ The workflow suggests a path, and Gary can override its depth. Record load beari
 
 | # | Feature | Phase | Status |
 |---|---|---|---|
-| 4 | Visual language and UI foundation | Figma design | in-progress |
+| 4 | Visual language and UI foundation | Visual foundation | in-progress |
 | 1 | Application architecture and scaffold | Foundation | done |
 | 2 | Coding standards and tooling | Foundation | done |
 | 3 | Workspace data model | Foundation | done |
@@ -34,21 +36,47 @@ The workflow suggests a path, and Gary can override its depth. Record load beari
 | 11 | Agent task execution and action control | Real workspace | planned |
 | 12 | Saved artifacts and task continuity | Real workspace | planned |
 
-## Figma design first
+## Visual foundation, current resume point
 
-### 4. Visual language and UI foundation · in-progress · needs a decision
+### 4. Visual language and UI foundation · in-progress · first screen review
 
-Use Gary's selected Figma template as the visual and component foundation, extending its design system where the agent workspace needs additional elements. Design representative screens for project navigation, tasks and activity, selected context, and artifacts. Explore and review the experience before implementation. Feature numbers remain stable; section order records the revised sequence.
+Establish the visual language and reusable component choices for project navigation, conversation and activity, selected context, artifacts, and Appearance. Use real shadcn.io blocks as the basis for the next review. Confirm the review medium with Gary rather than treating Figma as a prerequisite or assuming it has been permanently abandoned.
 
-**Done when:** Gary accepts the visual direction, reusable Figma components, typography, color, spacing, representative workspace screens, and key states; keyboard focus and readable layouts are specified; design decisions are captured for implementation. Then features 1 through 3 establish the technical foundations, and features 5 through 8 implement the accepted screens.
+**Done when:** Gary accepts the visual direction, reusable component choices, typography, color, spacing, representative workspace screens, and key states in the chosen review medium; keyboard focus and readable layouts are specified; design decisions are captured for implementation. Features 1 through 3 already provide the technical foundations. Features 5 through 8 remain the clickable workspace work.
 
-- [ ] Design it (spec): `/architect visual language and UI foundation`
+* [ ] Design it (spec): `/architect visual language and UI foundation`
+
+**Resume here:** Review the implemented Chat With Tools sample in the running app. Gary selected this block and approved this review route. Preserve the Developer Tools Sidebar and the selected conversation structure. Do not restart discovery, repeat the interview, or expand Figma.
+
+**First review spec:** [0003. Chat With Tools visual review](../specs/0003-chat-with-tools-review.md).
+
+* [x] Adapt the selected block and completed sample reader.
+* [x] Connect the task route, Markdown inspector, local draft, and read states.
+* [ ] Finish browser verification and obtain visual feedback. Safari and the in-app browser were inspected; Chrome automation timed out.
+
+**Code:** `src/components/blocks/ai/ai-chat-with-tools.tsx`, `src/features/workspace/chat-review.tsx`, `src/services/chat-review.ts`, and `src/fixtures/chat-review.ts`.
+
+**Interview choices to carry forward, not visual acceptance:**
+
+* Design the intended workspace beyond the shell placeholders. Record the eventual decision in a new visual spec, retaining architecture spec 0001 and data model spec 0002. Spec 0003 now records the first Chat With Tools review, not the whole visual foundation.
+* Resume recent work, with projects and their tasks in one grouped sidebar. Keep conversation central and use one optional inspector for context or artifacts. Actual resume across restarts belongs with later persistence, not sample storage.
+* Use compact navigation and readable conversation spacing. Show a concise activity summary with expandable steps rather than all activity inline.
+* Keep approval requests visible in the conversation, with an inspect action for affected files and the concrete proposed change. Distinguish next run context selections from immutable context used by earlier runs, following spec 0002.
+* On narrow windows, show one surface at a time: conversation by default, navigation in a sheet, and context or artifacts in a full width detail view with a clear return action.
+* Include Appearance without changing its theme import, save, reset, or mode behavior. Design for light and dark. The first review story is a completed task that creates a Markdown plan from fabricated project notes, visibly marked as sample content.
+* Gary chose the shadcn Figma template styling, including Geist, during the Figma interview. This did not approve the resulting screen or change the app's fonts and tokens. He also chose linked key states rather than wiring every control, and no extra References section in the future spec. Revisit only choices affected by the selected real blocks or a change of review medium.
+
+**Earlier Figma session, historical:** No new application UI, component installation, or visual spec resulted from that session. The current review above supersedes this as the resume point. The Figma page contains only the two static completed task screens linked above. Context selection, approvals, draft, working, waiting, failure, empty and loading states, narrow layouts, Appearance screens, custom reusable workspace components, and prototype links were not created. These needs remain; do not silently treat them as done or recreate them in Figma unless Gary resumes that route. First screen visual feedback is still unresolved.
+
+**Earlier repository handoff (historical):** Before these documentation edits, the working tree was clean on `feat/workspace-data-model` at `9de79e5`, tracking `origin/feat/workspace-data-model`. A fresh fetch showed `origin/main` one merge commit ahead (`ba85a24`, PR #1), with identical file contents. Local `main` was still at `3df1a98`; do not start new work from that stale local branch. These handoff edits are local and uncommitted. Preserve them before switching branches, recheck Git status, then use the current merged base for the next feature branch. No code changed or build checks were rerun during the Figma exploration; existing verification evidence is in README.
+
+**Known documentation debt:** Spec 0001 is marked Accepted but still contains historical claims that the scaffold is unbuilt and Git has no remote. Its current architecture and Appearance contracts remain valid. A later `/architect` cleanup should reconcile that historical wording without reopening the accepted stack or treating the unfinished visual work as shipped.
 
 ## Foundations
 
 ### 1. Application architecture and scaffold · done
 
-Create the smallest runnable browser shell needed for a private workspace on this Mac. Gary accepted the architecture on September 13, 2026: React, Vite, TypeScript, and shadcn components with Radix, using Node 22 and npm. This feature now starts first and uses shadcn.io as its UI source, replacing its earlier Figma acceptance prerequisite. The broader Figma sequence above records the earlier plan and needs scope reconciliation.
+Create the smallest runnable browser shell needed for a private workspace on this Mac. Gary accepted the architecture on September 13, 2026: React, Vite, TypeScript, and shadcn components with Radix, using Node 22 and npm. The scaffold was built from shadcn.io, replacing its earlier Figma acceptance prerequisite.
 
 **Spec:** [0001. Application architecture and scaffold](../specs/0001-application-architecture-scaffold/index.md).
 
@@ -88,7 +116,7 @@ Define projects, tasks, runs, context selections, and artifacts, including how t
 
 ## Clickable workspace
 
-Implement the accepted Figma screens with clearly identified sample content. Compare each implementation to the design as it is built. Navigation and interactions work, but agent execution and saved user data are simulated. Finish and inspect this whole experience before connecting real services.
+Implement the component and interaction choices accepted through feature 4 with clearly identified sample content. Review actual blocks and the running result with Gary. Figma explorations are not automatically implementation references. Navigation and interactions work, but agent execution and saved user data are simulated. Finish and inspect this whole experience before connecting real services.
 
 ### 5. Project navigation prototype · planned · needs a decision
 

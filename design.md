@@ -2,6 +2,14 @@
 
 Source: architecture spec 0001. This scaffold uses neutral shadcn Radix components, semantic colors, Lucide icons, and the system sans serif font.
 
+## Review status and next step
+
+The sections below describe the current scaffold and its existing reuse rules, not an accepted design for the full workspace. The September 13 Figma exploration is paused and was not approved. Its Geist font, panel dimensions, and composed screens must not silently replace the current application defaults.
+
+Gary selected the actual shadcn.io Chat With Tools block after reviewing its live preview and accepted the running app review route. The first completed sample is now implemented at `/workspace/task-preview`. Preserve its header, plain message rows, expandable tool cards, result action, and composer. Spec 0003 records the bounded first review. Visual acceptance is pending. Do not restart the design questionnaire or expand Figma.
+
+Interview choices, Figma links, unfinished work, and the proposed next step are recorded under feature 4 and the handoff in [scope](docs/scope/scope.md). Those choices are useful inputs, not approval of the first visual pass. The existing Developer Tools Sidebar and Appearance behavior remain the implementation baseline.
+
 ## Character and composition
 
 A quiet workspace with clear regions. A compact navigation rail anchors the application title and Settings link. The workspace contains project navigation, a main task area, and an artifact panel. Sample labels stay visible. Appearance uses a page heading and grouped cards for theme selection, mode, and local preferences, with a dialog for importing CSS.
@@ -16,7 +24,7 @@ Use the installed shadcn components and their variants. Default token values liv
 
 ## Responsive and accessibility behavior
 
-The three workspace regions sit together on a wide window and stack on narrow screens. Settings cards flow in one column. Keep navigation, controls, and sample content reachable at 375 CSS pixels. Use labelled fields, visible keyboard focus, semantic regions, and Radix dialog focus management.
+The overview retains its scaffold layout. The sample task uses one conversation surface, the existing navigation sheet on narrow windows, and a full width Markdown detail sheet with a return action. Settings cards flow in one column. Keep navigation, controls, and sample content reachable at 375 CSS pixels. Use labelled fields, visible keyboard focus, semantic regions, and Radix dialog focus management.
 
 ## Block selection and reuse
 
