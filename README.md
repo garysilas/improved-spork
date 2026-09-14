@@ -63,7 +63,7 @@ A representative import fixture is in `src/fixtures/tweakcn-modern-minimal.css`,
 | `src/services`           | Data contract and selected adapter                       |
 | `src/fixtures`           | Sample labels and representative theme CSS               |
 
-The app uses the Vite React TypeScript initializer and shadcn Radix Nova primitives. It uses the system font rather than the initializer's optional font package. Local Git is initialized with no remote. Dependency output, environment files, and temporary browser artifacts are ignored. Existing specs and the project skill are preserved.
+The app uses the Vite React TypeScript initializer and shadcn Radix Nova primitives. It uses the system font rather than the initializer's optional font package. Git has an `origin` remote, and the workspace data model was merged through PR #1. Dependency output, environment files, and temporary browser artifacts are ignored. Existing specs and the project skill are preserved.
 
 ## Build inspection
 
@@ -79,7 +79,7 @@ Chrome 152 validated all 19 scenario factories and paged through 37 active tasks
 
 Safari 26.6.2 passed inspection after Gary enabled Allow remote automation in Safari's Developer settings. It validated all 19 fixture scenarios, paged through 37 active tasks, traced distinct artifact context history, rejected a second active run, and returned the expected missing version error. Shell checks confirmed loading, failure, Retry recovery, navigation, direct reload, unchanged browser storage, and no overflow at 1440 and 600 CSS pixels. Format checking, typecheck, lint, and the production build passed; the same five existing shadcn lint warnings remain.
 
-Real persistence, file access, and agent execution belong to later scoped features. The historical Figma sequence in the wider scope still needs reconciliation with spec 0001.
+Real persistence, file access, and agent execution belong to later scoped features. For the current handoff, unfinished visual work, Figma review status, and next component selection step, read [scope](docs/scope/scope.md). Figma exploration is paused and is not an approved implementation reference.
 
 ## Formatting and code checks
 
