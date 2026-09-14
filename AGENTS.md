@@ -29,11 +29,11 @@ Development uses `127.0.0.1:5173`; preview uses `127.0.0.1:4173`. Both fail if t
 
 Architecture: [spec 0001](docs/specs/0001-application-architecture-scaffold/index.md). Scope: [scope](docs/scope/scope.md). UI direction: [design](design.md). The accepted shadcn scaffold decision supersedes the earlier Figma prerequisite for this slice. Spec 0001 retains historical scaffold wording; the scope handoff identifies it separately from the current implementation.
 
-Workspace data contracts and fixtures: [spec 0002](docs/specs/0002-workspace-data-model/index.md). For the current resume point, design review status, and unfinished work, read the September 13 handoff and feature 4 in [scope](docs/scope/scope.md). No visual foundation spec 0003 has been written. Figma exploration is paused and is not an accepted implementation reference.
+Workspace data contracts and fixtures: [spec 0002](docs/specs/0002-workspace-data-model/index.md). For the current resume point, design review status, and unfinished work, read the September 13 handoff and feature 4 in [scope](docs/scope/scope.md). The first Chat With Tools review is recorded in [spec 0003](docs/specs/0003-chat-with-tools-review.md); it does not complete the visual foundation. Figma exploration is paused and is not an accepted implementation reference.
 
 ## Working with Gary on UI
 
-* Use actual shadcn.io components and composed blocks. The Figma kit is a separate library, not proof that a matching React block was selected or reused. Preserve the selected Developer Tools Sidebar unless Gary approves changing it.
+* Use actual shadcn.io components and composed blocks. The Figma kit is a separate library, not proof that a matching React block was selected or reused. Preserve the selected Developer Tools Sidebar and Chat With Tools conversation block unless Gary approves changing them.
 * Gary can communicate a choice with a block URL, name, or screenshot and a short description of where to use it. The agent owns finding candidates, inspecting their source and live previews, explaining fit, and reusing the selected block. Bring a small visual shortlist when no block is selected; do not require Gary to know component APIs or repeat an extensive interview.
 * Prefer a short review loop around a real block and a visible result. Confirm the next review medium before implementation. Do not resume Figma generation or treat its exploratory Geist styling as an approved change to the app's fonts and tokens.
 

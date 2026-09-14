@@ -7,6 +7,8 @@ A private workspace on Gary's Mac for moving personal projects forward with agen
 
 The application scaffold, tooling, and workspace data model are built. The next deliverable is a convincing clickable workspace with sample content, using actual reusable UI components. Real persistence, selected file access, and agent execution come later. The earlier plan requiring an accepted Figma design before choosing tools or writing any code no longer describes the project.
 
+**Current review:** Gary selected the actual shadcn.io Chat With Tools block after viewing live previews and accepted the running app review route. The first completed sample is implemented at `/workspace/task-preview`, with expandable tool activity, a Markdown inspector, and a local draft composer. Review this result before extending feature 4. Spec [0003](../specs/0003-chat-with-tools-review.md) records this bounded choice. Visual acceptance is still pending.
+
 **Handoff, September 13, 2026:** Figma work is paused. Gary wants useful shadcn.io components and blocks to be used directly, not recreated as similar looking arrangements in Figma or from separate primitives. He found the long design interview and Figma workflow unhelpful and asked how to communicate component choices. The agent recommended reviewing actual blocks and iterating in the running app. This recommendation has not yet been tried or expressly ratified as a permanent replacement for Figma. Do not expand Figma or assume its screens are accepted. Resume with a small visual shortlist of real shadcn.io options and confirm the review route before changing application code.
 
 **Latest Figma exploration:** Gary supplied the [shadcn template](https://www.figma.com/design/eKRotihVQ9n9brVeiZadCZ/Agent-Enviroment) on September 13. Page `AOE Workspace` (`6007:2`) contains [completed task, light](https://www.figma.com/design/eKRotihVQ9n9brVeiZadCZ/Agent-Enviroment?node-id=6007-3) and [completed task, dark](https://www.figma.com/design/eKRotihVQ9n9brVeiZadCZ/Agent-Enviroment?node-id=6008-529). Both are editable 1440 × 960 static screens using Geist styles, template variables, and component instances. Screenshot inspection and visible layout bounds checks passed. These checks do not imply acceptance, keyboard verification, or a working prototype. Gary chose to refine the first screen rather than continue, then questioned the Figma workflow. No specific visual revisions were supplied. Original template pages were preserved.
@@ -36,7 +38,7 @@ The workflow suggests a path, and Gary can override its depth. Record load beari
 
 ## Visual foundation, current resume point
 
-### 4. Visual language and UI foundation · in-progress · needs a decision
+### 4. Visual language and UI foundation · in-progress · first screen review
 
 Establish the visual language and reusable component choices for project navigation, conversation and activity, selected context, artifacts, and Appearance. Use real shadcn.io blocks as the basis for the next review. Confirm the review medium with Gary rather than treating Figma as a prerequisite or assuming it has been permanently abandoned.
 
@@ -44,11 +46,19 @@ Establish the visual language and reusable component choices for project navigat
 
 * [ ] Design it (spec): `/architect visual language and UI foundation`
 
-**Resume here:** Do not repeat the completed interview. Inspect the current app and the selected Developer Tools Sidebar, then use shadcn.io discovery and live previews to show a small shortlist of actual conversation and inspector components or blocks. Explain what each provides and what adaptation it needs. Gary can select by URL, name, or screenshot. Confirm the review route and selected block before editing code; adapt one block and review the running result rather than proposing an entire replacement interface.
+**Resume here:** Review the implemented Chat With Tools sample in the running app. Gary selected this block and approved this review route. Preserve the Developer Tools Sidebar and the selected conversation structure. Do not restart discovery, repeat the interview, or expand Figma.
+
+**First review spec:** [0003. Chat With Tools visual review](../specs/0003-chat-with-tools-review.md).
+
+* [x] Adapt the selected block and completed sample reader.
+* [x] Connect the task route, Markdown inspector, local draft, and read states.
+* [ ] Finish browser verification and obtain visual feedback. Safari and the in-app browser were inspected; Chrome automation timed out.
+
+**Code:** `src/components/blocks/ai/ai-chat-with-tools.tsx`, `src/features/workspace/chat-review.tsx`, `src/services/chat-review.ts`, and `src/fixtures/chat-review.ts`.
 
 **Interview choices to carry forward, not visual acceptance:**
 
-* Design the intended workspace beyond the shell placeholders. Record the eventual decision in a new visual spec, retaining architecture spec 0001 and data model spec 0002. Spec 0003 was discussed but never written; check numbering before creating it.
+* Design the intended workspace beyond the shell placeholders. Record the eventual decision in a new visual spec, retaining architecture spec 0001 and data model spec 0002. Spec 0003 now records the first Chat With Tools review, not the whole visual foundation.
 * Resume recent work, with projects and their tasks in one grouped sidebar. Keep conversation central and use one optional inspector for context or artifacts. Actual resume across restarts belongs with later persistence, not sample storage.
 * Use compact navigation and readable conversation spacing. Show a concise activity summary with expandable steps rather than all activity inline.
 * Keep approval requests visible in the conversation, with an inspect action for affected files and the concrete proposed change. Distinguish next run context selections from immutable context used by earlier runs, following spec 0002.
@@ -56,9 +66,9 @@ Establish the visual language and reusable component choices for project navigat
 * Include Appearance without changing its theme import, save, reset, or mode behavior. Design for light and dark. The first review story is a completed task that creates a Markdown plan from fabricated project notes, visibly marked as sample content.
 * Gary chose the shadcn Figma template styling, including Geist, during the Figma interview. This did not approve the resulting screen or change the app's fonts and tokens. He also chose linked key states rather than wiring every control, and no extra References section in the future spec. Revisit only choices affected by the selected real blocks or a change of review medium.
 
-**Still unfinished:** No new application UI, component installation, or visual spec resulted from this session. The Figma page contains only the two static completed task screens linked above. Context selection, approvals, draft, working, waiting, failure, empty and loading states, narrow layouts, Appearance screens, custom reusable workspace components, and prototype links were not created. These needs remain; do not silently treat them as done or recreate them in Figma unless Gary resumes that route. First screen visual feedback is still unresolved.
+**Earlier Figma session, historical:** No new application UI, component installation, or visual spec resulted from that session. The current review above supersedes this as the resume point. The Figma page contains only the two static completed task screens linked above. Context selection, approvals, draft, working, waiting, failure, empty and loading states, narrow layouts, Appearance screens, custom reusable workspace components, and prototype links were not created. These needs remain; do not silently treat them as done or recreate them in Figma unless Gary resumes that route. First screen visual feedback is still unresolved.
 
-**Repository handoff:** Before these documentation edits, the working tree was clean on `feat/workspace-data-model` at `9de79e5`, tracking `origin/feat/workspace-data-model`. A fresh fetch showed `origin/main` one merge commit ahead (`ba85a24`, PR #1), with identical file contents. Local `main` was still at `3df1a98`; do not start new work from that stale local branch. These handoff edits are local and uncommitted. Preserve them before switching branches, recheck Git status, then use the current merged base for the next feature branch. No code changed or build checks were rerun during the Figma exploration; existing verification evidence is in README.
+**Earlier repository handoff (historical):** Before these documentation edits, the working tree was clean on `feat/workspace-data-model` at `9de79e5`, tracking `origin/feat/workspace-data-model`. A fresh fetch showed `origin/main` one merge commit ahead (`ba85a24`, PR #1), with identical file contents. Local `main` was still at `3df1a98`; do not start new work from that stale local branch. These handoff edits are local and uncommitted. Preserve them before switching branches, recheck Git status, then use the current merged base for the next feature branch. No code changed or build checks were rerun during the Figma exploration; existing verification evidence is in README.
 
 **Known documentation debt:** Spec 0001 is marked Accepted but still contains historical claims that the scaffold is unbuilt and Git has no remote. Its current architecture and Appearance contracts remain valid. A later `/architect` cleanup should reconcile that historical wording without reopening the accepted stack or treating the unfinished visual work as shipped.
 

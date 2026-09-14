@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router'
 import { AppLayout } from './layout'
+import { ChatReviewPage } from '@/features/workspace/chat-review'
 import { Workspace } from '@/features/workspace/workspace'
 import { Appearance } from '@/features/settings/appearance'
 import {
@@ -17,9 +18,8 @@ export function App() {
       <Routes>
         <Route element={<AppLayout />}>
           <Route index element={<Navigate to="/workspace" replace />} />
-          <Route path="workspace" element={<Workspace />}>
-            <Route path="task-preview" element={null} />
-          </Route>
+          <Route path="workspace" element={<Workspace />} />
+          <Route path="workspace/task-preview" element={<ChatReviewPage />} />
           <Route
             path="settings"
             element={<Navigate to="/settings/appearance" replace />}
